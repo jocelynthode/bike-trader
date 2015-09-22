@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  text: MyText
+  start: 2015-09-22 20:09:52
+  end: 2015-09-22 20:09:52
+  timeToEnd: 2015-09-22 20:09:52
+  isFinished: false
+  kwh: 9.99
+  mileage: 9.99
+  color: MyString
+  brand: MyString
+  user: 
+
+two:
+  title: MyString
+  text: MyText
+  start: 2015-09-22 20:09:52
+  end: 2015-09-22 20:09:52
+  timeToEnd: 2015-09-22 20:09:52
+  isFinished: false
+  kwh: 9.99
+  mileage: 9.99
+  color: MyString
+  brand: MyString
+  user: 
