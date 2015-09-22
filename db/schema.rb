@@ -11,22 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922180952) do
+ActiveRecord::Schema.define(version: 20150922193640) do
 
   create_table "auctions", force: :cascade do |t|
     t.string   "title"
     t.text     "text"
     t.datetime "start"
     t.datetime "end"
-    t.datetime "timeToEnd"
-    t.boolean  "isFinished"
+    t.datetime "time_to_end"
+    t.boolean  "is_finished"
     t.string   "kwh"
     t.string   "mileage"
     t.string   "color"
     t.string   "brand"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end
