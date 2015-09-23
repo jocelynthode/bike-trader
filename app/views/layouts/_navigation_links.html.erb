@@ -2,14 +2,20 @@
 
 <%= link_to 'My Auctions', root_path, class: 'navbar-brand' %>
 
+<% if user_signed_in? %>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> amanda <b class="caret"></b></a>
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"><%= current_user.email %></i><b class="caret"></b></a>
   <ul class="dropdown-menu">
     <li>
-      <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+      <%= link_to 'Profile', edit_user_registration_path %>
     </li>
     <li>
-      <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+      <%= link_to 'Log Out', destroy_user_session_path, :method => :delete %>
     </li>
   </ul>
 </li>
+<% else %>
+<%= link_to 'Sign Up', new_user_registration_path, class: 'navbar-brand' %>
+<%= link_to 'Log In', new_user_session_path, class: 'navbar-brand' %>
+<% end %>
+

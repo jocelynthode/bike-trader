@@ -57,3 +57,5 @@ end
 group :development do
   gem 'rails_layout'
 end
+# Use 'devise' for authentication
+  gem 'devise'
