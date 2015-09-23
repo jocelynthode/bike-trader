@@ -1,0 +1,21 @@
+<h1>All E-Bikes</h1>
+<%= link_to 'New auction', new_auction_path %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+
+  <% @auctions.each do |auction| %>
+      <tr>
+        <td><%= auction.title %></td>
+        <td><%= auction.text %></td>
+        <td><%= link_to 'Show', auction_path(auction) %></td>
+        <td><%= link_to 'Edit', edit_auction_path(auction) %></td>
+        <td><%= link_to 'Destroy', auction_path(auction),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>
+<%= link_to 'New auction', new_auction_path %>

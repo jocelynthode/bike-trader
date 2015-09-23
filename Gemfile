@@ -59,3 +59,6 @@ group :development do
 end
 # Use 'devise' for authentication
   gem 'devise'
+
+#date validation
+gem 'validates_timeliness'

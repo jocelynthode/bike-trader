@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'main/index'
 
   devise_scope :user do
-   # root to: 'main#index'
+    #root to: 'main#index'
     match '/sessions/user', to: 'devise/sessions#create', via: :post
   end
 
