@@ -66,4 +66,4 @@ end
 gem 'validates_timeliness'
 
 #images
-gem 'CarrierWave'
+gem 'carrierwave'
