@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Use ransack to build search functionality
+gem 'ransack', '~> 1.7.0'
 # Use bootstrap-sass for the actual bootstrap css/sass
 gem 'bootstrap-sass', '~> 3.3.5'
 # Use twitter-bootstrap-rails only for the helpers and generators scripts
