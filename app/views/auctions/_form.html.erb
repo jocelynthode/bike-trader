@@ -1,4 +1,4 @@
-<%= form_for :auction, url: auctions_path do |f| %>
+<%= form_for :auction, url: auctions_path, locals: edit_date do |f| %>
 
     <% if @auction.errors.any? %>
         <div id="error_explanation">
@@ -26,12 +26,20 @@
 
     <p>
       <%= f.label :start %><br>
-      <%= f.datetime_select :start %>
+      <% if edit_date %>
+        <%= f.datetime_select :start %>
+      <% else %>
+        <%= @auction.start %>
+      <% end %>
     </p>
 
     <p>
       <%= f.label :end %><br>
-      <%= f.datetime_select :end %>
+      <% if edit_date %>
+          <%= f.datetime_select :end %>
+      <% else %>
+          <%= @auction.end %>
+      <% end %>
     </p>
 
     <p>

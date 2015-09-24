@@ -1,5 +1,7 @@
 <h1>Editing auction</h1>
 
-<%= render 'form' %>
+<%= render partial: 'form', :locals => { :edit_date => false } %>
+
+
 
 <%= link_to 'Back', auctions_path %>
