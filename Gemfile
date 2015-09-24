@@ -64,3 +64,6 @@ end
 
 #date validation
 gem 'validates_timeliness'
+
+#images
+gem 'carrierwave'

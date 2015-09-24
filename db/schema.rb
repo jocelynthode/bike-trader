@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20150924193401) do
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "avatar"
   end
 
   create_table "bids", force: :cascade do |t|

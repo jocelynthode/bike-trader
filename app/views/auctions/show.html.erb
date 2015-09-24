@@ -38,6 +38,11 @@
   <strong>Brand:</strong>
   <%= @auction.brand %>
 </p>
+<p>
+  <stront>Image:</stront>
+  <%= image_tag @auction.avatar.url.to_s %>
+</p>
+
 <div>
   Place a bid
   <% if user_signed_in? %>
