@@ -3,7 +3,8 @@ class AuctionsController < ApplicationController
     if params[:search] == nil then
       @auctions = Auction.all
     else
-      @auctions = Auction.search(params[:search]).result
+      @search = Auction.search(params[:search])
+      @auctions = @search.result
     end
   end
 
