@@ -30,6 +30,19 @@ ActiveRecord::Schema.define(version: 20150924183700) do
     t.string   "avatar"
   end
 
+  create_table "bids", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "auction_id"
+    t.integer  "amount"
+    t.datetime "time"
+    t.integer  "threshold"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bids", ["auction_id"], name: "index_bids_on_auction_id"
+  add_index "bids", ["user_id"], name: "index_bids_on_user_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
