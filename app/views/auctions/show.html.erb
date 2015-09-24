@@ -38,5 +38,13 @@
   <strong>Brand:</strong>
   <%= @auction.brand %>
 </p>
+<div>
+  Place a bid
+  <% if user_signed_in? %>
+    <%= render 'bids/form' %>
+  <% else %>
+    <%= link_to 'Log In to place a bid', new_user_session_path %>
+  <% end %>
+</div>
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
 <%= link_to 'Back', auctions_path %>
