@@ -1,6 +1,12 @@
 class AuctionsController < ApplicationController
   def index
-    @auctions = Auction.all
+    if params[:q] == nil then
+      @auctions = Auction.all
+      @search = Auction.search(params[:q])
+    else
+      @search = Auction.search(params[:q])
+      @auctions = @search.result
+    end
   end
 
   def show

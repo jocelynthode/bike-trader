@@ -1,4 +1,12 @@
-<h1>All E-Bikes</h1>
+<h1>Search</h1>
+<%= search_form_for @search do |f| %>
+    <%= f.label :title_cont %>
+    <%= f.search_field :title_cont %>
+
+    <%= f.submit %>
+<% end %>
+
+<h1>E-Bikes</h1>
 <%= link_to 'New auction', new_auction_path %>
 <table>
   <tr>
