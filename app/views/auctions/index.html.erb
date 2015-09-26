@@ -19,10 +19,12 @@
         <td><%= auction.title %></td>
         <td><%= auction.text %></td>
         <td><%= link_to 'Show', auction_path(auction) %></td>
+        <% if user_signed_in? and current_user.id == auction.user_id %>
         <td><%= link_to 'Edit', edit_auction_path(auction) %></td>
         <td><%= link_to 'Destroy', auction_path(auction),
                         method: :delete,
                         data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
   <% end %>
 </table>

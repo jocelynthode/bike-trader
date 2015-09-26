@@ -1,4 +1,5 @@
 class AuctionsController < ApplicationController
+  before_action :require_permission, only: [:edit, :update, :destroy ]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -20,13 +21,12 @@ class AuctionsController < ApplicationController
   end
 
   def edit
-    @auction = Auction.find(params[:id])
   end
 
   def create
-    @auction = Auction.new(auction_params)
+    @auction = current_user.auctions.create(auction_params)
 
-    if @auction.save
+    if @auction
       redirect_to @auction
     else
       render 'new'
@@ -44,10 +44,18 @@ class AuctionsController < ApplicationController
   end
 
   def destroy
-    @auction = Auction.find(params[:id])
     @auction.destroy
 
     redirect_to auctions_path
+  end
+
+  def require_permission
+    @auction = Auction.find(params[:id])
+    if current_user != @auction.user
+      redirect_to auctions_path
+    else
+      render 'edit'
+    end
   end
 
   private def auction_params
