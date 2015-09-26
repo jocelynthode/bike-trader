@@ -24,9 +24,9 @@ class AuctionsController < ApplicationController
   end
 
   def create
-    @auction = current_user.auctions.create(auction_params)
+    @auction = current_user.auctions.new(auction_params)
 
-    if @auction
+    if @auction.save
       redirect_to @auction
     else
       render 'new'
