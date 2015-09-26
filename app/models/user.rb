@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :bids
+  has_many :auctions
   attr_accessor :login
   validates_presence_of :username, :address
 
