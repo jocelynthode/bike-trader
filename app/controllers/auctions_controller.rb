@@ -53,8 +53,6 @@ class AuctionsController < ApplicationController
     @auction = Auction.find(params[:id])
     if current_user != @auction.user
       redirect_to auctions_path
-    else
-      render 'edit'
     end
   end
 
