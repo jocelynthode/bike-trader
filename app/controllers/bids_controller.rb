@@ -1,4 +1,5 @@
 class BidsController < ApplicationController
+
   def create
     @auction = Auction.find(params[:auction_id])
     info =  {:user => current_user, :time => DateTime.current}
