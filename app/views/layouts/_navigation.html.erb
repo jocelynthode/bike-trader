@@ -16,7 +16,7 @@
       <div class="col-lg-4 nav" style="margin-top:8px">
         <%= form_tag auctions_path, method: "get" do %>
             <div class="input-group">
-              <%= search_field_tag 'q[title_cont]', nil, class: "form-control", placeholder: "Search auctions..." %>
+              <%= search_field_tag 'q[title_or_text_or_color_or_brand_cont]', nil, class: "form-control", placeholder: "Search auctions..." %>
               <span class="input-group-btn">
               <%= submit_tag "Search", class: "btn btn-default" %>
               </span>
