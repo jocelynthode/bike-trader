@@ -1,35 +1,5 @@
-<div class="container">
-<h2 class="row text-center">
-  <a role="button" data-target="#adv_auction_search"
-      class="col-sm-6" data-toggle="collapse">Advanced search</a>
-</h2>
-<%= search_form_for @search, namespace: "adv",
-                    html: {id: 'adv_auction_search', class: 'form-horizontal collapse'} do |f| %>
-    <div class="form-group">
-      <%= f.label :title_cont, class: 'col-sm-3 control-label' %>
-      <%= f.search_field :title_cont %>
-    </div>
-    <div class="form-group">
-      <%= f.label :text_cont, class: 'col-sm-3 control-label' %>
-      <%= f.search_field :text_cont %>
-    </div>
-    <div class="form-group">
-      <%= f.label :color_cont, class: 'col-sm-3 control-label' %>
-      <%= f.search_field :color_cont %>
-    </div>
-    <div class="form-group">
-      <%= f.label :mileage_gt, 'Mileage between', class: 'col-sm-3 control-label' %>
+<h2>Auctions</h2>
 
-      <%= f.text_field :mileage_gt %>
-
-      <%= f.label :mileage_lt, 'and' %>
-      <%= f.text_field :mileage_lt %>
-
-    </div>
-    <div class="form-group">
-      <%= f.submit class: 'col-sm-offset-3' %>
-    </div>
-<% end %>
-</div>
+<%= render'search_form' %>
 
 <%= render 'bikelist' %>
