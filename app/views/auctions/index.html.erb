@@ -1,4 +1,4 @@
-<h1>Search</h1>
+<h1 xmlns:style="http://www.w3.org/1999/xhtml" xmlns:style="http://www.w3.org/1999/xhtml">Search</h1>
 <%= search_form_for @search do |f| %>
     <%= f.label :title_cont %>
     <%= f.search_field :title_cont %>
@@ -8,21 +8,25 @@
 
 <h1>E-Bikes</h1>
 <%= link_to 'New auction', new_auction_path %>
-<table style='width: 100%'>
+<table>
+  <colgroup>
+    <col span="1" style="width: 10px;">
+    <col span="1" style="width: 10px;">
+    <col span="1" style="width: 10px;">
+    <col span="1" style="width: 100%;">
+  </colgroup>
+
   <tr>
+    <th>Action</th>
     <th>Title</th>
-    <th>Text</th>
   </tr>
 
   <% @auctions.each do |auction| %>
       <tr>
+        <td><%= button_to 'Show', auction_path(auction), :method => 'get' %></td>
+        <td><%= button_to 'Edit', edit_auction_path(auction), :method => 'get' %></td>
+        <td><%= button_to 'Delete', auction_path(auction), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= auction.title %></td>
-        <td><%= auction.text %></td>
-        <td><%= link_to 'Show', auction_path(auction) %></td>
-        <td><%= link_to 'Edit', edit_auction_path(auction) %></td>
-        <td><%= link_to 'Destroy', auction_path(auction),
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
 </table>
