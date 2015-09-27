@@ -20,7 +20,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">
             E-Bikes
-            <div class="pull-right"><%= button_to 'New auction', new_auction_path, :method => 'get' %></div>
+            <div class="pull-right"><%= link_to 'New auction', new_auction_path %></div>
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
@@ -37,10 +37,10 @@
                   <tr>
                     <td><%= auction.title %></td>
                     <td><%= auction.text %></td>
-                    <td><%= button_to 'Show', auction_path(auction), :method => 'get' %></td>
+                    <td><%= link_to 'Show', auction_path(auction) %></td>
                     <% if user_signed_in? and current_user.id == auction.user_id %>
-                        <td><%= button_to 'Edit', edit_auction_path(auction), :method => 'get' %></td>
-                        <td><%= button_to 'Destroy', auction_path(auction),
+                        <td><%= link_to 'Edit', edit_auction_path(auction) %></td>
+                        <td><%= link_to 'Destroy', auction_path(auction),
                                         method: :delete,
                                         data: { confirm: 'Are you sure?' } %> </td>
                     <% end %>
