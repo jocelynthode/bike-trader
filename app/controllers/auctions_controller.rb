@@ -49,6 +49,6 @@ class AuctionsController < ApplicationController
   end
 
   private def auction_params
-    params.require(:auction).permit(:title, :text, :start, :end, :kwh, :mileage, :color, :brand, :minimum_price, :avatar)
+    params.require(:auction).permit(:title, :text, :start, :end, :kwh, :mileage, :color, :brand, :avatar, :minimum_price)
   end
 end

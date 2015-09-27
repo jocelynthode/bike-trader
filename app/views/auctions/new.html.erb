@@ -3,5 +3,4 @@
 <%= render partial: 'form', :locals => { :editable => true } %>
 
 
-
-<%= link_to 'Back', auctions_path %>
+<%= button_to 'Back', auctions_path, :method => 'get' %>

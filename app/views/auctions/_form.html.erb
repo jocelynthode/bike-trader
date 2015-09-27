@@ -1,4 +1,4 @@
-<%= form_for :auction, url: auctions_path, :html => { :multipart => true}, locals: editable do |f| %>
+<%= form_for :auction, url: auctions_path, locals: editable do |f| %>
 
     <% if @auction.errors.any? %>
         <div id="error_explanation">
@@ -29,7 +29,7 @@
       <% if editable %>
         <%= f.datetime_select :start %>
       <% else %>
-        <%= @auction.start.itself %>
+          <%= f.text_field :start, :value => @auction.start, :readonly=>true %>
       <% end %>
     </p>
 
@@ -38,7 +38,7 @@
       <% if editable %>
           <%= f.datetime_select :end %>
       <% else %>
-          <%= @auction.end.itself %>
+          <%= f.text_field :end, :value => @auction.end, :readonly=>true %>
       <% end %>
     </p>
 
