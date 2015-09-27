@@ -1,60 +1,8 @@
-<h1> My Auctions </h1>
-<h1 xmlns:style="http://www.w3.org/1999/xhtml" xmlns:style="http://www.w3.org/1999/xhtml">Search</h1>
+<h1>Search</h1>
 <%= search_form_for @search do |f| %>
     <%= f.label :title_cont %>
     <%= f.search_field :title_cont %>
     <%= f.submit %>
 <% end %>
-<!--<div class="row">
-    <h1>Search</h1>
-    <%#- search_form_for @search do |f| %>
-        <%#- f.label :title_or_text_or_color_or_brand_cont -%>
-        <%#- f.search_field :title_or_text_or_color_or_brand_cont -%>
 
-        <%#- f.submit -%>
-    <%#- end -%>
-</div>
--->
-<div class="row">
-    <div class="col-xs-6 col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-            E-Bikes
-            <div class="pull-right"><%= link_to 'New auction', new_auction_path %></div>
-        </div>
-        <!-- /.panel-heading -->
-        <div class="panel-body">
-          <div class="table-responsive">
-            <table class="table">
-              <thead>
-              <tr>
-                <th>Title</th>
-                <th>Text</th>
-              </tr>
-              </thead>
-              <tbody>
-              <% @auctions.each do |auction| %>
-                  <tr>
-                    <td><%= auction.title %></td>
-                    <td><%= auction.text %></td>
-                    <td><%= link_to 'Show', auction_path(auction) %></td>
-                    <% if user_signed_in? and current_user.id == auction.user_id %>
-                        <td><%= link_to 'Edit', edit_auction_path(auction) %></td>
-                        <td><%= link_to 'Destroy', auction_path(auction),
-                                        method: :delete,
-                                        data: { confirm: 'Are you sure?' } %> </td>
-                    <% end %>
-                  </tr>
-              <% end %>
-              </tbody>
-            </table>
-          </div>
-          <!-- /.table-responsive -->
-        </div>
-        <!-- /.panel-body -->
-      </div>
-      <!-- /.panel -->
-    </div>
-    <!-- /.col-lg-6 -->
-</div>
-<!-- /.row -->
+<%= render 'bikelist' %>

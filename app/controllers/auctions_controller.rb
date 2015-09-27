@@ -51,9 +51,6 @@ class AuctionsController < ApplicationController
 
   def my_index
     @auctions = current_user.auctions
-    #TODO: create its own view without the search
-    @search = Auction.search(params[:q])
-    render 'index'
   end
 
   def require_permission
