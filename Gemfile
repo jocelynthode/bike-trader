@@ -67,3 +67,4 @@ gem 'validates_timeliness'
 
 #images
 gem 'carrierwave'
+

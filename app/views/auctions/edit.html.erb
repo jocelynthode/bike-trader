@@ -1,5 +1,3 @@
-<h1>Editing auction</h1>
-
-<%= render partial: 'form', :locals => { :editable => true } %>
-
-<%= button_to 'Back', auctions_path, :method => 'get' %>
+<h2>Editing Auction</h2>
+<%= link_to 'Back', auctions_path %>
+<%= render partial: 'form', :locals => { :editable => false } %>
