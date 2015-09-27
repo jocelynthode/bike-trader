@@ -3,13 +3,15 @@ class AuctionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    @search = Auction.search(params[:q])
     if params[:q] == nil then
       @auctions = Auction.all
-      @search = Auction.search(params[:q])
     else
-      @search = Auction.search(params[:q])
       @auctions = @search.result
     end
+
+    @collapse_form = params[:show_adv] ? 'collapse in' : 'collapse'
+
   end
 
   def show

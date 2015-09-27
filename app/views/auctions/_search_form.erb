@@ -4,7 +4,10 @@
        class="col-sm-6" data-toggle="collapse">Advanced search</a>
   </h2>
   <%= search_form_for @search, namespace: "adv",
-                      html: {id: 'adv_auction_search', class: 'form-horizontal collapse'} do |f| %>
+          html: {id: 'adv_auction_search',
+                 class: 'form-horizontal '+@collapse_form} do |f| %>
+
+      <%= hidden_field_tag 'show_adv', 1 %>
       <div class="form-group">
         <%= f.label :title_cont, class: 'col-sm-3 control-label' %>
         <%= f.search_field :title_cont %>
