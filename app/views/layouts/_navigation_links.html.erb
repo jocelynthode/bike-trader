@@ -1,7 +1,6 @@
 <%# add navigation links to this file %>
 
 <% if user_signed_in? %>
-<%= link_to 'My Auctions', auctions_path, class: 'navbar-brand' %>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"><%= current_user.email %></i><b class="caret"></b></a>
   <ul class="dropdown-menu">
@@ -20,7 +19,7 @@
   </ul>
 </li>
 <% else %>
-<%-# link_to 'Sign Up', new_user_registration_path, class: 'navbar-brand' -%>
+<%= link_to 'Sign Up', new_user_registration_path, class: 'navbar-brand' %>
 <%= link_to new_user_session_path, class: 'navbar-brand'  do%>
         <span class="glyphicon glyphicon-log-in"></span>
         Log In

@@ -1,61 +1,67 @@
 <h1>Auction Overview</h1>
-<p>
-  <strong>Title:</strong>
-  <%= @auction.title %>
-</p>
+<div class="row">
+  <div class="col-xs-12 col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <b><%= @auction.title %></b>
+      </div>
+      <!-- /.panel-heading -->
+      <div class="panel-body">
+        <div class="col-xs-12 col-md-6">
+        <div class="row">
+          <b>Title: </b> <%= @auction.title %>
+        </div>
+        <div class="row">
+          <b>Text: </b> <%= @auction.text %>
+        </div>
+        <div class="row">
+          <b>Start: </b> <%= @auction.start %>
+        </div>
+        <div class="row">
+          <b>End: </b> <%= @auction.end %>
+        </div>
+        <div class="row">
+          <b>KWh: </b> <%= @auction.kwh %>
+        </div>
+        <div class="row">
+          <b>Mileage: </b> <%= @auction.mileage %>
+        </div>
+        <div class="row">
+          <b>Color: </b> <%= @auction.color %>
+        </div>
+        <div class="row">
+          <b>Brand: </b> <%= @auction.brand %>
+        </div>
+        <div class="row">
+          <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+          <!--<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>-->
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <div class="row">
+          <h4><b>Image</b></h4>
+          <%= image_tag @auction.avatar.url.to_s %>
+        </div>
 
-<p>
-  <strong>Text:</strong>
-  <%= @auction.text %>
-</p>
+      </div>
+      </div>
+      <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+  </div>
+  <!-- /.col-lg-6 -->
+</div>
+<!-- /.row -->
 
-<p>
-  <strong>Start:</strong>
-  <%= @auction.start %>
-</p>
 
-<p>
-  <strong>End:</strong>
-  <%= @auction.end %>
-</p>
-
-<p>
-  <strong>KWh:</strong>
-  <%= @auction.kwh %>
-</p>
-
-<p>
-  <strong>Mileage:</strong>
-  <%= @auction.mileage %>
-</p>
-
-<p>
-  <strong>Color:</strong>
-  <%= @auction.color %>
-</p>
-
-<p>
-  <strong>Brand:</strong>
-  <%= @auction.brand %>
-</p>
-<p>
-  <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-  <div id="fb-root"></div>
-  <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
-</p>
-
-<p>
-  <stront>Image:</stront>
-  <%= image_tag @auction.avatar.url.to_s %>
-</p>
-
-<div>
-  Place a bid
+<h2>Place a bid</h2>
+<%= link_to 'Edit', edit_auction_path(@auction) %> |
+<%= link_to 'Back', auctions_path %>
+<div class="row">
   <% if user_signed_in? %>
     <%= render 'bids/form' %>
   <% else %>
     <%= link_to 'Log In to place a bid', new_user_session_path %>
   <% end %>
 </div>
-<%= link_to 'Edit', edit_auction_path(@auction) %> |
-<%= link_to 'Back', auctions_path %>
+

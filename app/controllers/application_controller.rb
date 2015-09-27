@@ -8,17 +8,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  layout :layout_by_resource
-
   protected
 
-  def layout_by_resource
-    if devise_controller? #&& resource_name == :user && action_name == "new"
-      "devise"
-    else
-      "application"
-    end
-  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:address, :username, :email, :password, :password_confirmation, :remember_me) }

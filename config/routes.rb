@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, path: '', path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'signup'},
     :controllers => { :passwords => "passwords" }
-  #get 'main/index'
+  get 'main/index'
 
   devise_scope :user do
     match '/sessions/user', to: 'devise/sessions#create', via: :post
@@ -12,21 +12,21 @@ Rails.application.routes.draw do
   end
 
 
-  devise_scope :user do
-    authenticated :user do
-      root 'main#index', as: :authenticated_root
-    end
+  #devise_scope :user do
+  #  authenticated :user do
+  #    root 'main#index', as: :authenticated_root
+  #  end
 
-    unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
-    end
-  end
+  #  unauthenticated do
+  #    root 'devise/sessions#new', as: :unauthenticated_root
+  #  end
+  #end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  #root 'main#index'
+  root 'main#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

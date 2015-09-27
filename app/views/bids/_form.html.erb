@@ -1,14 +1,16 @@
-<%= form_for([@auction, @auction.bids.build]) do |f| %>
-    <p>
-      <%= f.label :amount %><br>
-      <%= f.text_field :amount %>
-    </p>
+<div class="col-xs-6 col-md-4">
+    <%= form_for([@auction, @auction.bids.build] , :html => { :multipart => true, :class => "form-signin"}) do |f| %>
+        <div class="form-group">
+          <%= f.label :amount %><br>
+          <%= f.text_field :amount, class: "form-control" %>
+        </div>
 
-    <p>
-      <%= f.label :threshold %><br>
-      <%= f.text_field :threshold %>
-    </p>
-    <p>
-      <%= f.submit %>
-    </p>
-<% end %>
+        <div class="form-group">
+          <%= f.label :threshold %><br>
+          <%= f.text_field :threshold, class: "form-control"%>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Create Bid", class:"btn btn-lg btn-primary pull-left" %>
+        </div>
+    <% end %>
+</div>
