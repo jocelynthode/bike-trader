@@ -74,7 +74,11 @@
     </div>
 
     <div class="form-group">
-      <%= f.submit "New" , class:"btn btn-lg btn-primary pull-left" %>
+      <% if editable %>
+          <%= f.submit "New" , class:"btn btn-lg btn-primary pull-left" %>
+      <% else %>
+          <%= f.submit "Save Changes" , class:"btn btn-lg btn-primary pull-left" %>
+      <% end %>
     </div>
 <% end %>
 </div>
