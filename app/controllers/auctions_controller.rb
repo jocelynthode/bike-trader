@@ -49,6 +49,13 @@ class AuctionsController < ApplicationController
     redirect_to auctions_path
   end
 
+  def my_index
+    @auctions = current_user.auctions
+    #TODO: create its own view without the search
+    @search = Auction.search(params[:q])
+    render 'index'
+  end
+
   def require_permission
     @auction = Auction.find(params[:id])
     if current_user != @auction.user
