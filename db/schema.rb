@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924183700) do
+ActiveRecord::Schema.define(version: 20150927101114) do
 
   create_table "auctions", force: :cascade do |t|
     t.string   "title"
@@ -25,9 +25,10 @@ ActiveRecord::Schema.define(version: 20150924183700) do
     t.string   "color"
     t.string   "brand"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "avatar"
+    t.integer  "minimum_price"
   end
 
   create_table "bids", force: :cascade do |t|
