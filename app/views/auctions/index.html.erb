@@ -42,8 +42,7 @@
                         <td><%= button_to 'Edit', edit_auction_path(auction), :method => 'get' %></td>
                         <td><%= button_to 'Destroy', auction_path(auction),
                                         method: :delete,
-                                        data: { confirm: 'Are you sure?' }, 
-                                        :method => 'get' %></td>
+                                        data: { confirm: 'Are you sure?' } %> </td>
                     <% end %>
                   </tr>
               <% end %>
