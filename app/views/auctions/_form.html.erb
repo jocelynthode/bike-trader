@@ -1,6 +1,6 @@
 <div class="row">
 <div class="col-xs-6 col-md-4">
-<%= form_for :auction, url: auctions_path, :html => { :multipart => true, :class => "form-signin"}, locals: editable do |f| %>
+<%= form_for @auction, :html => { :multipart => true, :class => "form-signin"}, locals: editable do |f| %>
     <% if @auction.errors.any? %>
         <div id="error_explanation">
           <h3>
