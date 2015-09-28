@@ -18,11 +18,8 @@ class Auction < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
-  def has_ended
-    DateTime.new(Date.today.year, Date.today.month, Date.today.day, Time.now.hour, Time.now.min, Time.now.sec) > self.end.to_datetime
+  def ended?
+    DateTime.now > self.end
   end
 
-  def self.user
-    User.find(@user_id)
-  end
 end

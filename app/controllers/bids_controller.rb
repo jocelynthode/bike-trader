@@ -1,5 +1,5 @@
 class BidsController < ApplicationController
-
+  before_action :require_permission, only: [:create]
   def index
     @auction = Auction.find(params[:auction_id])
     redirect_to auction_path(@auction)
@@ -28,6 +28,14 @@ class BidsController < ApplicationController
   end
 
   private
+
+    def require_permission
+      @auction = Auction.find(params[:auction_id])
+      if @auction.ended?
+        redirect_to auction_path
+      end
+    end
+
     def bid_params
       params.require(:bid).permit(:amount, :threshold, :user, :time)
     end

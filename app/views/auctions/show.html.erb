@@ -63,7 +63,7 @@
   <!-- /.col-lg-6 -->
 </div>
 <!-- /.row -->
-<% if !@auction.has_ended %>
+<% if !@auction.ended? %>
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
 <%= link_to 'Back', auctions_path %>
 <div class="row">
