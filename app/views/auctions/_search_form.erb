@@ -1,36 +1,41 @@
-<div class="container">
-  <h2 class="row text-center">
-    <a role="button" data-target="#adv_auction_search"
-       class="col-sm-6" data-toggle="collapse">Advanced search</a>
-  </h2>
-  <%= search_form_for @search, namespace: "adv",
-          html: {id: 'adv_auction_search',
-                 class: 'form-horizontal '+@collapse_form} do |f| %>
+<div class="row">
+<div class="col-sm-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <a role="button" data-target="#adv_auction_search" data-toggle="collapse" class="btn btn-primary">Use advanced search</a>
+    </div>
+    <div class="panel-body">
+      <%= search_form_for @search, namespace: "adv",
+                          html: {id: 'adv_auction_search',
+                                 class: 'form-horizontal '+@collapse_form} do |f| %>
 
-      <%= hidden_field_tag 'show_adv', 1 %>
-      <div class="form-group">
-        <%= f.label :title_cont, class: 'col-sm-3 control-label' %>
-        <%= f.search_field :title_cont %>
-      </div>
-      <div class="form-group">
-        <%= f.label :text_cont, class: 'col-sm-3 control-label' %>
-        <%= f.search_field :text_cont %>
-      </div>
-      <div class="form-group">
-        <%= f.label :color_cont, class: 'col-sm-3 control-label' %>
-        <%= f.search_field :color_cont %>
-      </div>
-      <div class="form-group">
-        <%= f.label :mileage_gt, 'Mileage between', class: 'col-sm-3 control-label' %>
+          <%= hidden_field_tag 'show_adv', 1 %>
+          <div class="form-group">
+            <%= f.label :title_cont, class: 'col-sm-3 control-label' %>
+            <%= f.search_field :title_cont %>
+          </div>
+          <div class="form-group">
+            <%= f.label :text_cont, class: 'col-sm-3 control-label' %>
+            <%= f.search_field :text_cont %>
+          </div>
+          <div class="form-group">
+            <%= f.label :color_cont, class: 'col-sm-3 control-label' %>
+            <%= f.search_field :color_cont %>
+          </div>
+          <div class="form-group">
+            <%= f.label :mileage_gt, 'Mileage between', class: 'col-sm-3 control-label' %>
 
-        <%= f.text_field :mileage_gt %>
+            <%= f.text_field :mileage_gt %>
 
-        <%= f.label :mileage_lt, 'and' %>
-        <%= f.text_field :mileage_lt %>
+            <%= f.label :mileage_lt, 'and' %>
+            <%= f.text_field :mileage_lt %>
 
-      </div>
-      <div class="form-group">
-        <%= f.submit class: 'col-sm-offset-3' %>
-      </div>
-  <% end %>
+          </div>
+          <div class="form-group">
+            <%= f.submit class: 'col-sm-offset-3' %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 </div>
