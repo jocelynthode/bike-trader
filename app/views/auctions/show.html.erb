@@ -33,6 +33,9 @@
           <b>Brand: </b> <%= @auction.brand %>
         </div>
         <div class="row">
+          <b>Seller: </b> <%= @auction.user.username %>
+        </div>
+        <div class="row">
           <b>Current bid: </b>
           <% if @auction.bids.select(&:persisted?).empty? %>
               <%= @auction.minimum_price %>
