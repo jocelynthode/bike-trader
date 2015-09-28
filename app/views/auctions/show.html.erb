@@ -55,6 +55,7 @@
   <!-- /.col-lg-6 -->
 </div>
 <!-- /.row -->
+<% if !@auction.has_ended %>
 <h2>Place a bid</h2>
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
 <%= link_to 'Back', auctions_path %>
@@ -64,5 +65,8 @@
   <% else %>
     <%= link_to 'Log In to place a bid', new_user_session_path %>
   <% end %>
+<% else %>
+    <%= 'The auction has ended! You cannot place bids anymore!' %>
+    <%= link_to 'Back', auctions_path %>
+<% end %>
 </div>
-
