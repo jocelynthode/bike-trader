@@ -63,13 +63,16 @@
   <!-- /.col-lg-6 -->
 </div>
 <!-- /.row -->
-<h2>Place a bid</h2>
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
 <%= link_to 'Back', auctions_path %>
 <div class="row">
   <% if user_signed_in? %>
-    <%= render 'bids/form' %>
+    <% unless current_user.username == @auction.user.username %>
+      <h2>Place a bid</h2>
+      <%= render 'bids/form'  %>
+    <% end %>
   <% else %>
+    <h2>Place a bid</h2>
     <%= link_to 'Log In to place a bid', new_user_session_path %>
   <% end %>
 </div>
