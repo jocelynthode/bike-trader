@@ -31,7 +31,7 @@ class BidsController < ApplicationController
 
     def require_permission
       @auction = Auction.find(params[:auction_id])
-      if @auction.ended?
+      if @auction.ended? || current_user.id == @auction.user_id
         redirect_to auction_path
       end
     end
