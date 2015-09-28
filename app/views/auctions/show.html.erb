@@ -33,6 +33,14 @@
           <b>Brand: </b> <%= @auction.brand %>
         </div>
         <div class="row">
+          <b>Current bid: </b>
+          <% if @auction.bids.select(&:persisted?).empty? %>
+              <%= @auction.minimum_price %>
+          <% else %>
+              <%= @auction.bids.select(&:persisted?).each.max_by(&:amount).amount %>
+          <% end %>
+        </div>
+        <div class="row">
           <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
           <!--<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>-->
         </div>
