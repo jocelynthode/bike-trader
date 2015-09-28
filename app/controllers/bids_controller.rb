@@ -1,10 +1,19 @@
 class BidsController < ApplicationController
 
+  def index
+    @auction = Auction.find(params[:auction_id])
+    redirect_to auction_path(@auction)
+  end
+
   def create
     @auction = Auction.find(params[:auction_id])
     info =  {:user => current_user, :time => DateTime.current}
     @bid = @auction.bids.create(info.merge(bid_params))
-    redirect_to auction_path(@auction)
+    if @bid.save
+      redirect_to auction_path(@auction)
+    else
+      render 'auctions/show'
+    end
   end
 
   private
