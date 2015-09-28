@@ -27,8 +27,10 @@ class AuctionsController < ApplicationController
     @auction = current_user.auctions.new(auction_params)
 
     if @auction.save
+      flash[:notice] = "Auction successfully created!"
       redirect_to @auction
     else
+      flash[:alert] = "Cannot create auction! Please try again!"
       render 'new'
     end
   end
@@ -45,7 +47,7 @@ class AuctionsController < ApplicationController
 
   def destroy
     @auction.destroy
-
+    flash[:notice] = "Auction successfully deleted!"
     redirect_to auctions_path
   end
 

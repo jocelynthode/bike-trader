@@ -1,20 +1,6 @@
 <div class="row">
 <div class="col-xs-6 col-md-4">
 <%= form_for :auction, url: auctions_path, :html => { :multipart => true, :class => "form-signin"}, locals: edit_date do |f| %>
-    <% if @auction.errors.any? %>
-        <div id="error_explanation">
-          <h3>
-            <%= pluralize(@auction.errors.count, 'error') %> prohibited
-            this article from being saved:
-          </h3>
-          <ul>
-            <% @auction.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
     <div class="form-group">
       <%= f.label :title %><br>
       <%= f.text_field :title, class: "form-control" %>
@@ -24,7 +10,6 @@
       <%= f.label :text %><br>
       <%= f.text_area :text, class: "form-control" %>
     </div>
-
     <div class="form-group">
       <%= f.label :start %><br>
       <% if edit_date %>
