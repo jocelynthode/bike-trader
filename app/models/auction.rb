@@ -1,5 +1,5 @@
 class Auction < ActiveRecord::Base
-  has_many :bids
+  has_many :bids, :dependent => :delete_all
   belongs_to :user
   validates_presence_of :start, :end
 
