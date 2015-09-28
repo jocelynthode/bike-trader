@@ -7,11 +7,22 @@ class BidsController < ApplicationController
 
   def create
     @auction = Auction.find(params[:auction_id])
+    current_bid =  if @auction.bids.select(&:persisted?).empty?
+                     @auction.minimum_price
+                   else
+                     @auction.bids.select(&:persisted?).each.max_by(&:amount).amount
+                   end
     info =  {:user => current_user, :time => DateTime.current}
-    @bid = @auction.bids.create(info.merge(bid_params))
-    if @bid.save
-      redirect_to auction_path(@auction)
+    @bid = @auction.bids.build(info.merge(bid_params))
+
+    if @bid.amount > current_bid
+      if @bid.save
+        redirect_to auction_path(@auction)
+      else
+        render 'auctions/show'
+      end
     else
+      @bid.errors.add(:amount, "must be greater than #{current_bid}")
       render 'auctions/show'
     end
   end
