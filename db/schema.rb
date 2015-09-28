@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925094247) do
+ActiveRecord::Schema.define(version: 20150928084138) do
 
   create_table "auctions", force: :cascade do |t|
     t.string   "title"
@@ -20,24 +20,25 @@ ActiveRecord::Schema.define(version: 20150925094247) do
     t.datetime "end"
     t.datetime "time_to_end"
     t.boolean  "is_finished"
-    t.decimal  "kwh",         precision: 6, scale: 3
+    t.decimal  "kwh",           precision: 6, scale: 3
     t.integer  "mileage"
     t.string   "color"
     t.string   "brand"
     t.integer  "user_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "avatar"
+    t.integer  "minimum_price"
   end
 
   create_table "bids", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "auction_id"
-    t.integer  "amount"
+    t.decimal  "amount",     precision: 6, scale: 2
     t.datetime "time"
-    t.integer  "threshold"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.decimal  "threshold",  precision: 6, scale: 2
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   add_index "bids", ["auction_id"], name: "index_bids_on_auction_id"

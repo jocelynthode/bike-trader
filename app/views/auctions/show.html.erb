@@ -33,6 +33,17 @@
           <b>Brand: </b> <%= @auction.brand %>
         </div>
         <div class="row">
+          <b>Seller: </b> <%= @auction.user.username %>
+        </div>
+        <div class="row">
+          <b>Current bid: </b>
+          <% if @auction.bids.select(&:persisted?).empty? %>
+              <%= @auction.minimum_price %>
+          <% else %>
+              <%= @auction.bids.select(&:persisted?).each.max_by(&:amount).amount %>
+          <% end %>
+        </div>
+        <div class="row">
           <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
           <!--<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>-->
         </div>
@@ -52,16 +63,21 @@
   <!-- /.col-lg-6 -->
 </div>
 <!-- /.row -->
-
-
-<h2>Place a bid</h2>
+<% if !@auction.has_ended %>
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
 <%= link_to 'Back', auctions_path %>
 <div class="row">
   <% if user_signed_in? %>
-    <%= render 'bids/form' %>
+    <% unless current_user.username == @auction.user.username %>
+      <h2>Place a bid</h2>
+      <%= render 'bids/form'  %>
+    <% end %>
   <% else %>
+    <h2>Place a bid</h2>
     <%= link_to 'Log In to place a bid', new_user_session_path %>
   <% end %>
+<% else %>
+    <%= 'The auction has ended! You cannot place bids anymore!' %>
+    <%= link_to 'Back', auctions_path %>
+<% end %>
 </div>
-

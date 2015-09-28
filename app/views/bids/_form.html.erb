@@ -1,3 +1,15 @@
+<% if @bid && @bid.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% @bid.errors.each do |attr, msg| %>
+          <% if @bid.errors[attr].first == msg %>
+            <li><%= "#{attr.to_s.capitalize!} #{msg}" %></li>
+          <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="col-xs-6 col-md-4">
     <%= form_for([@auction, @auction.bids.build] , :html => { :multipart => true, :class => "form-signin"}) do |f| %>
         <div class="form-group">

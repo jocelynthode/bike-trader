@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   end
 
   resources :auctions do
+    collection do
+      get 'my_index'
+    end
     resources :bids
   end
 

@@ -3,13 +3,15 @@ class AuctionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    @search = Auction.search(params[:q])
     if params[:q] == nil then
       @auctions = Auction.all
-      @search = Auction.search(params[:q])
     else
-      @search = Auction.search(params[:q])
       @auctions = @search.result
     end
+
+    @collapse_form = params[:show_adv] ? 'collapse in' : 'collapse'
+
   end
 
   def show
@@ -51,6 +53,10 @@ class AuctionsController < ApplicationController
     redirect_to auctions_path
   end
 
+  def my_index
+    @auctions = current_user.auctions
+  end
+
   def require_permission
     @auction = Auction.find(params[:id])
     if current_user != @auction.user
@@ -59,6 +65,6 @@ class AuctionsController < ApplicationController
   end
 
   private def auction_params
-    params.require(:auction).permit(:title, :text, :start, :end, :kwh, :mileage, :color, :brand, :avatar)
+    params.require(:auction).permit(:title, :text, :start, :end, :kwh, :mileage, :color, :brand, :avatar, :minimum_price)
   end
 end

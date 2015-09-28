@@ -1,3 +1,33 @@
 // Place all the styles related to the auctions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#adv_auction_search {
+
+  input {
+    @extend .form-control;
+  }
+
+  .form-group {
+
+    label:first-child {
+      @extend .col-sm-3;
+    }
+    input {
+      @extend .col-sm-4;
+    }
+
+  }
+
+  .form-group.between {
+    input {
+      @extend .col-sm-1;
+    }
+    label:nth-of-type(2) {
+      @extend .col-sm-1;
+      @extend .text-center;
+    }
+
+  }
+
+}

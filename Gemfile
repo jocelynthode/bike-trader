@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# specify ruby version for heroku
+ruby '2.2.3'
 # Use ransack to build search functionality
 gem 'ransack', '~> 1.7.0'
 # Use bootstrap-sass for the actual bootstrap css/sass

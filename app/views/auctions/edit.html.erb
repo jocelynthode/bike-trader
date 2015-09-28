@@ -1,3 +1,3 @@
 <h2>Editing Auction</h2>
 <%= link_to 'Back', auctions_path %>
-<%= render partial: 'form', :locals => { :edit_date => false } %>
+<%= render partial: 'form', :locals => { :editable => false, :ended => @auction.has_ended } %>
