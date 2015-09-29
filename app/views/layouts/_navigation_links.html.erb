@@ -1,6 +1,8 @@
 <%# add navigation links to this file %>
 
-<%= link_to 'My Auctions', my_index_auctions_path, class: 'navbar-brand' %>
+<% if user_signed_in? %>
+    <%= link_to 'My Auctions', my_index_auctions_path, class: 'navbar-brand' %>
+<% end %>
 <%= link_to 'All Auctions', auctions_path, class: 'navbar-brand' %>
 
 <% if user_signed_in? %>
