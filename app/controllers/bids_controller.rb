@@ -17,6 +17,10 @@ class BidsController < ApplicationController
 
     if @bid.amount > current_bid
       if @bid.save
+        automatic_bid(@bid.amount)
+        if (DateTime.new.now + 5.minutes) > @auction.end
+          @auction.update(:end (DateTime.new.now + 15.minutes))
+        end
         redirect_to auction_path(@auction)
       else
         render 'auctions/show'
@@ -34,6 +38,11 @@ class BidsController < ApplicationController
       if @auction.ended? || current_user == @auction.user
         redirect_to auction_path
       end
+    end
+
+    def automatic_bid(amount)
+      bids = Bid.where('threshold > ? AND auction_id = ?', amount, params[:auction_id])
+
     end
 
     def bid_params
