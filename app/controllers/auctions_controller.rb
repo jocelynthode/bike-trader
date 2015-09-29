@@ -40,7 +40,7 @@ class AuctionsController < ApplicationController
   def update
     @auction = Auction.find(params[:id])
 
-    if @auction.update(auction_params)
+    if @auction.update(auction_params :update)
       redirect_to @auction
     else
       render 'edit'
@@ -65,7 +65,17 @@ class AuctionsController < ApplicationController
     end
   end
 
-  private def auction_params
-    params.require(:auction).permit(:title, :text, :start, :end, :kwh, :mileage, :color, :brand, :avatar, :minimum_price)
-  end
+  private
+
+    def auction_params(action = :new)
+      case action
+        when :new
+          params.require(:auction).permit(:title, :text, :end, :kwh, :mileage, :color, :brand,
+                                          :avatar, :minimum_price)
+                .merge(start: DateTime.now)
+        when :update
+          params.require(:auction).permit(:title, :text, :kwh, :mileage, :color, :brand, :avatar)
+      end
+    end
+
 end
