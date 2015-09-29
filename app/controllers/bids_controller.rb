@@ -44,8 +44,13 @@ class BidsController < ApplicationController
     def automatic_bid(bid)
       @auction = Auction.find(params[:auction_id])
       #find the highest bids that have a threshold higher than the current highest bid
-      bids = Bid.where('threshold > ? AND auction_id = ? AND user_id != ?', bid.amount, params[:auction_id], bid.user_id)
-                 .group(:id, :user_id).order(:threshold, time: :desc)
+
+      bids = Bid.find_by_sql('SELECT * FROM (
+          SELECT DISTINCT ON (bids.user_id) bids.* FROM bids
+          WHERE (threshold > ? AND auction_id = ? AND user_id != ?)
+          ORDER BY bids.user_id, bids.amount DESC
+          ) AS bids ORDER BY bids.threshold ASC, bids.time DESC;',
+         [bid.amount, params[:auction_id], bid.user_id])
 
       if bids.length >= 1 && bid.threshold != nil && bids.last.threshold < bid.threshold
         new_amount = bids.last.threshold + 1
