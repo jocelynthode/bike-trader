@@ -73,6 +73,14 @@
             <% end %>
           </div>
         </div>
+        <div class="col-xs-12 col-md-6">
+          <div class="row">
+            <b>Highest bidder: </b>
+            <% userid = @auction.bids.select(&:persisted?).each.max_by(&:amount).user %>
+            <% uid =User.find(userid) %>
+            <%= uid.username %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
