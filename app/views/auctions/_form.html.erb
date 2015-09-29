@@ -74,7 +74,19 @@
       <%= f.label 'Image' %>
       <%= f.hidden_field :avatar_cache %>
       <%= f.file_field :avatar, :readonly => ended %>
-      <%= image_tag @auction.avatar_url.to_s %>
+      <% @has_avatar = @auction.avatar? %>
+      <% if @has_avatar %>
+          <%= image_tag @auction.avatar.url.to_s %>
+          <p>
+            <label>
+              <%= f.check_box :remove_avatar %>
+              Remove avatar
+            </label>
+          </p>
+      <% else %>
+          <b>No Image available!</b>
+      <% end %>
+
     </div>
 
     <div class="form-group">

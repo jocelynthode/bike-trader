@@ -43,7 +43,12 @@
       <div class="col-xs-12 col-md-6">
         <div class="row">
           <h4><b>Image</b></h4>
+          <% @has_avatar = @auction.avatar? %>
+          <% if @has_avatar %>
           <%= image_tag @auction.avatar.url.to_s %>
+          <% else %>
+          <b>No Image available!</b>
+          <% end %>
         </div>
 
       </div>

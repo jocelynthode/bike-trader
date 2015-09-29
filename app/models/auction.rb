@@ -20,6 +20,12 @@ class Auction < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+
+  def remove_avatar=(val)
+    avatar_will_change! if val
+    super
+  end
+
   def ended?
     DateTime.now > self.end
   end
