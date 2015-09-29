@@ -59,7 +59,8 @@ class AuctionsController < ApplicationController
 
   def require_permission
     @auction = Auction.find(params[:id])
-    if current_user != @auction.user
+    if current_user != @auction.user or @auction.ended?
+      flash[:alert] = "Cannot edit this auction!"
       redirect_to auctions_path
     end
   end
