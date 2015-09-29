@@ -36,15 +36,7 @@
           <b>Seller: </b> <%= @auction.user.username %>
         </div>
         <div class="row">
-          <b>Current bid: </b>
-          <% if @auction.bids.select(&:persisted?).empty? %>
-              <%= @auction.minimum_price %>
-          <% else %>
-              <%= @auction.bids.select(&:persisted?).each.max_by(&:amount).amount %>
-          <% end %>
-        </div>
-        <div class="row">
-          <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+          <b>Share:</b> <br><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
           <!--<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>-->
         </div>
       </div>
@@ -63,6 +55,29 @@
   <!-- /.col-lg-6 -->
 </div>
 <!-- /.row -->
+<div class="row">
+  <div class="col-xs-12 col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <b>Bids</b>
+      </div>
+      <!-- /.panel-heading -->
+      <div class="panel-body">
+        <div class="col-xs-12 col-md-6">
+          <div class="row">
+            <b>Current bid: </b>
+            <% if @auction.bids.select(&:persisted?).empty? %>
+                <%= @auction.minimum_price %>
+            <% else %>
+                <%= @auction.bids.select(&:persisted?).each.max_by(&:amount).amount %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <% if !@auction.ended? %>
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
 <%= link_to 'Back', auctions_path %>
