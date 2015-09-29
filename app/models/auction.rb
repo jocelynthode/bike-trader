@@ -1,6 +1,8 @@
 class Auction < ActiveRecord::Base
+
   has_many :bids, :dependent => :delete_all
   belongs_to :user
+
   validates_presence_of :start, :end
 
   validates_datetime :end, :after => :start
@@ -15,6 +17,7 @@ class Auction < ActiveRecord::Base
   validates :color, presence: true
   validates :brand, presence: true
   validates :minimum_price, presence: true
+  validates :avatar, presence: true
 
   mount_uploader :avatar, AvatarUploader
 

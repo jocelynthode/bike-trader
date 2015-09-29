@@ -68,15 +68,19 @@
       <%= f.text_field :minimum_price, class: "form-control", :readonly => ended %>
     </div>
 
+
+
     <div class="form-group">
       <%= f.label 'Image' %>
+      <%= f.hidden_field :avatar_cache %>
       <%= f.file_field :avatar, :readonly => ended %>
+      <%= image_tag @auction.avatar_url.to_s %>
     </div>
 
     <div class="form-group">
       <% if editable && !ended %>
           <%= f.submit "New" , class:"btn btn-lg btn-primary pull-left" %>
-      <% elsif editable && !ended %>
+      <% elsif !editable && !ended %>
           <%= f.submit "Save Changes" , class:"btn btn-lg btn-primary pull-left" %>
       <% end %>
     </div>
