@@ -56,7 +56,7 @@ class BidsController < ApplicationController
         end
 
       elsif bids.length == 1
-        new_amount = bids.first.threshold < amount + 1 ? bids.first.threshold : amount + 1
+        new_amount = bids.first.threshold < bid.amount + 1 ? bids.first.threshold : amount + 1
       end
       new_bid = @auction.bids.build(user_id: bids.first.user_id,
                                     amount: new_amount, threshold: bid.threshold,
