@@ -74,7 +74,8 @@ class AuctionsController < ApplicationController
                                           :avatar, :minimum_price, :remove_avatar, :_destroy)
                 .merge(start: DateTime.now)
         when :update
-          params.require(:auction).permit(:title, :text, :kwh, :mileage, :color, :brand, :avatar,                                           :avatar, :minimum_price, :remove_avatar, :_destroy))
+          params.require(:auction).permit(:title, :text, :kwh, :mileage, :color, :brand, :avatar,
+                                          :minimum_price, :remove_avatar, :_destroy)
       end
     end
 
