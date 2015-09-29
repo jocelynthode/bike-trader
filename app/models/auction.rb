@@ -17,7 +17,6 @@ class Auction < ActiveRecord::Base
   validates :color, presence: true
   validates :brand, presence: true
   validates :minimum_price, presence: true
-  validates :avatar, presence: true
 
   mount_uploader :avatar, AvatarUploader
 
