@@ -15,10 +15,10 @@
           <b>Text: </b> <%= @auction.text %>
         </div>
         <div class="row">
-          <b>Start: </b> <%= @auction.start %>
+          <b>Start: </b> <%= @auction.start.strftime("%d %B %Y, %H:%M%p") %>
         </div>
         <div class="row">
-          <b>End: </b> <%= @auction.end %>
+          <b>End: </b> <%= @auction.end.strftime("%d %B %Y, %H:%M%p") %>
         </div>
         <div class="row">
           <b>KWh: </b> <%= @auction.kwh %>
