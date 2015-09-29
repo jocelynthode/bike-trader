@@ -16,6 +16,7 @@ class AuctionsController < ApplicationController
 
   def show
     @auction = Auction.find(params[:id])
+    @highest_bid = @auction.bids.select(&:persisted?).each.max_by(&:amount)
   end
 
   def new

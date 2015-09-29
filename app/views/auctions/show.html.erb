@@ -71,19 +71,21 @@
         <div class="col-xs-12 col-md-6">
           <div class="row">
             <b>Current bid: </b>
-            <% if @auction.bids.select(&:persisted?).empty? %>
-                <%= @auction.minimum_price %>
+            <% if @highest_bid %>
+                <%= @highest_bid.amount %>
             <% else %>
-                <%= @auction.bids.select(&:persisted?).each.max_by(&:amount).amount %>
+                <%= @auction.minimum_price %>
             <% end %>
           </div>
         </div>
         <div class="col-xs-12 col-md-6">
           <div class="row">
-            <b>Highest bidder: </b>
-            <% userid = @auction.bids.select(&:persisted?).each.max_by(&:amount).user %>
-            <% uid =User.find(userid) %>
-            <%= uid.username %>
+            <% if @highest_bid %>
+                <b>Highest bidder: </b>
+                <%= @highest_bid.user.username %>
+            <% else %>
+                <b>No bid yet</b>
+            <% end %>
           </div>
         </div>
       </div>
