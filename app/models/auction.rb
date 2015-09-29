@@ -22,4 +22,8 @@ class Auction < ActiveRecord::Base
     DateTime.now > self.end
   end
 
+  def self.user
+    User.find(@user_id)
+  end
+
 end
