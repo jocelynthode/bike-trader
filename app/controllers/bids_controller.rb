@@ -47,29 +47,27 @@ class BidsController < ApplicationController
       bids = Bid.where('threshold > ? AND auction_id = ? AND user_id != ?', bid.amount, params[:auction_id], bid.user_id).having(
           'MAX(amount)').group(:user_id).order(:threshold, time: :desc)
 
-      if bids.length >= 1 && bid.threshold != nil && bids[-1].threshold < bid.threshold
-        new_amount = bids[-1].threshold + 1
+      if bids.length >= 1 && bid.threshold != nil && bids.last.threshold < bid.threshold
+        new_amount = bids.last.threshold + 1
         new_amount = bid.threshold if new_amount > bid.threshold
         new_bid = @auction.bids.build(user_id: bid.user_id,
                                       amount: new_amount, threshold: bid.threshold,
                                       time: DateTime.now)
         new_bid.save
         return
-      end
-
-      if bids.length > 1
+      elsif bids.length > 1
         #find the second to max threshold since this is the only one we need to beat
         second_to_max = bids[-2].threshold
 
-        new_amount = bids[-1].threshold == second_to_max ? second_to_max : second_to_max + 1
-        new_amount = bids[-1].threshold if new_amount > bids[-1].threshold
+        new_amount = bids.last.threshold == second_to_max ? second_to_max : second_to_max + 1
+        new_amount = bids.last.threshold if new_amount > bids.last.threshold
       elsif bids.length == 1
         new_amount = bids.first.threshold < bid.amount + 1 ? bids.first.threshold : bid.amount + 1
       else
         return
       end
-      new_bid = @auction.bids.build(user_id: bids.first.user_id,
-                                    amount: new_amount, threshold: bid.threshold,
+      new_bid = @auction.bids.build(user_id: bids.last.user_id,
+                                    amount: new_amount, threshold: bids.last.threshold,
                                     time: DateTime.now)
       new_bid.save
     end
