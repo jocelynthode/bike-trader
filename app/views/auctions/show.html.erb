@@ -94,7 +94,7 @@
 </div>
 
 <% if !@auction.ended? %>
-    <% if current_user.username == @auction.user.username %>
+    <% if current_user == @auction.user %>
         <%= link_to 'Edit', edit_auction_path(@auction) %> |
     <% end %>
     <%= link_to 'Back', auctions_path %>
